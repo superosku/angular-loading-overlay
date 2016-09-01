@@ -75,7 +75,9 @@ export default class BsLoadingOverlayDirective implements ng.IDirective {
             );
 
             $element.on('$destroy', () => {
-                overlayElementScope.$destroy();
+                if (overlayElementScope) {
+                    overlayElementScope.$destroy();
+                }
                 unsubscribe();
             });
             this.updateOverlayElement(overlayInstance);
